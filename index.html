@@ -19,28 +19,62 @@
     // ❗ Watch the Guided Project to learn proper debugging technique.
 
     // 👉 CHALLENGE 1
-    // 🧠 Build a PeterPan class. This class allows to instantiate persons with Peter Pan syndrome.
-    // 🧠 When instantiating a new person using this class, we provide a string with the name of the person.
-    // 🧠 The new person will have a `name` prop initialised to the desired name, and an `age` prop initialised to 0.
+    // 🧠 Build a PeterPan class. This class allows to instantiate persons with Peter Pan syndrome.-----
+    // 🧠 When instantiating a new person using this class, we provide a string with the name of the person.-------
+    // 🧠 The new person will have a `name` prop initialised to the desired name, and an `age` prop initialised to 0.-------
     // 🧠 The person also has an `ageGracefully` method, which increases `age` by 1 each time it's called.
     // 🧠 But there's a catch: once `age` reaches 12, the `ageGracefully` method will have no effect.
     class PeterPan {
+      // Constructs a new instance of the class.
+      //
+      // Parameters:
+      //   desiredName - The desired name for the instance.
+  
+      constructor(desiredName) {
+        this.name = desiredName;
+        this.age = 0;
+      }
+        // Increments the age of the object if the current age is less than 12.
+        ageGracefully(){
+          if (this.age <12 ){
 
-    }
+           this.age ++
+          }
+
+        }
+      }
+    
 
     // 👉 CHALLENGE 2
-    // 🧠 Build an AirPlane class. This class allows to instantiate airplanes.
-    // 🧠 When instantiating a new plane using this class, we provide a string with the model of the plane.
-    // 🧠 A new plane has a `model` prop initialised to the desired model, and also an `altitude` prop initialised to 0.
+    // 🧠 Build an AirPlane class. This class allows to instantiate airplanes.-------
+    // 🧠 When instantiating a new plane using this class, we provide a string with the model of the plane.--------
+    // 🧠 A new plane has a `model` prop initialised to the desired model, and also an `altitude` prop initialised to 0.-----
     // 🧠 Planes have an `up` method, which takes a number of meters as its argument.
     // 🧠 Calling `up` changes the `altitude` prop appropriately and returns the updated `altitude`.
     // 🧠 Planes have a `down` method, which takes a number of meters as its argument.
     // 🧠 Calling `down` changes the `altitude` prop appropriately and returns the updated `altitude`.
     // 🧠 If calling `down` would cause the plane to go below altitude zero, `altitude` is set to 0 and the string "CRASH!" is returned.
     class AirPlane {
+      constructor(desiredModel) {
+        this.model = desiredModel
+        this.altitude = 0
+      }
+      up(meters) {
+        this.altitude += meters
+        return this.altitude
 
     }
+    down(meters) {
+      if(this.altitude>= meters){
 
+      this.altitude -= meters
+      return this.altitude
+    }
+    this.altitude = 0
+    return "CRASH!"
+    
+  }
+    }
     // 👉 CHALLENGE 3
     // 🧠 Build a Bulb class.
     // 🧠 All new bulbs are initialised with a prop `isOn` and three methods: `turnOn`, `turnOff` and `toggle`.
@@ -48,8 +82,28 @@
     // 🧠 The methods work as one might expect, changing the value of `isOn` to the appropriate Boolean.
     // 🧠 The methods also return one of these two strings: "You turned the bulb ON", or "You turned the bulb OFF".
     class Bulb {
-
-    }
+        isOn = false
+        // Turns on the bulb.
+        turnOn(){
+            this.isOn = true
+            return "You turned the bulb ON"
+        }
+        // Turns off the bulb.
+        turnOff(){
+          this.isOn = false
+          return "You turned the bulb OFF"
+          
+        }
+        // Toggles the state of the bulb and returns a message indicating the new state.
+        toggle(){
+            this.isOn = !this.isOn
+            if (this.isOn){
+                return "You turned the bulb ON"
+            }
+            return "You turned the bulb OFF"
+        }
+      }
+    
 
     // 👉 CHALLENGE 4
     // 🧠 Build a CountDown class that can count down starting at any number we pass to the constructor.
@@ -66,8 +120,28 @@
     //   minusThree.count() // returns null
     //   minusThree.count() // returns null
     class CountDown {
+        constructor(num) {     // Define a class named CountDown
+// Constructor method that initializes the CountDown object with a specified number
+          this.currentnumber = num
+        }
+        count(){     // Define a method named count within the CountDown class
+          if(this.currentnumber >= 1){       // Check if the current number is greater than or equal to 1
+            return `${this.currentnumber--}!`      // If true, return the current number with a postfix '!' and then decrement the current number
+        }else{ if (this.currentnumber === 0){
+          this.currentnumber --         // Decrement the current number
+
+          return "Liftoff!"        // Return "Liftoff!" indicating that the countdown has reached zero
+
+        }else{        // If the current number is less than 0
+
+          return null         // Return null, indicating that the countdown has already completed
+
+      
+        }
+      }
 
     }
+  }
 
     // 🧪 TESTS, do not work below this line
     // 🧪 TESTS, do not work below this line
